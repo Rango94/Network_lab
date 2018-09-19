@@ -36,9 +36,10 @@ class network:
 
     def forword(self):
 
-        s1=tf.nn.relu(tf.matmul(self.input,self.w1))+self.b1
-        s2=tf.nn.relu(tf.matmul(s1,self.w2))+self.b2
-        output=tf.sigmoid(tf.matmul(s2,self.w3))
+        # s1=tf.nn.relu(tf.matmul(self.input,self.w1))+self.b1
+        # s2=tf.nn.relu(tf.matmul(s1,self.w2))+self.b2
+
+        output=tf.matmul(self.input,self.w3)
 
         return output
 
@@ -54,10 +55,10 @@ class network:
         prediction = tf.reshape(prediction, shape=[-1, 1])
         truth = tf.reshape(truth, shape=[-1, 1])
 
-        loss = -tf.reduce_sum((truth * tf.log(tf.clip_by_value(prediction, 1e-10, 1.0)) + (1 - truth)
-                               * tf.log(tf.clip_by_value(1 - prediction, 1e-10, 1.0))))
+        # loss = -tf.reduce_sum((truth * tf.log(tf.clip_by_value(prediction, 1e-10, 1.0)) + (1 - truth)
+        #                        * tf.log(tf.clip_by_value(1 - prediction, 1e-10, 1.0))))
 
-        # loss=-tf.reduce_sum(prediction*truth)
+        loss=-tf.reduce_sum(prediction*truth)
 
         return loss
 

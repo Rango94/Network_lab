@@ -3,11 +3,11 @@
 # @File  : generate_data.py
 # @Author: nanzhi.wang
 # @Date  : 2018/9/19 上午11:36
+
 import random as rd
 import numpy as np
 
 class data:
-
     def __init__(self,dis):
         self.dis=dis
 
@@ -24,7 +24,7 @@ class data:
                 if rd1>0:
                     y_std.append(1)
                 else:
-                    y_std.append(-1)
+                    y_std.append(0)
 
             if len(y_std)>size:
                 break
@@ -35,7 +35,7 @@ class data:
         input=[]
         y_std=[]
         while True:
-            rd1=(rd.random()-0.5)*2*self.dis
+            rd1=(rd.random()-0.5)*2
             rd2=(rd.random()-0.5)*2
             input.append(np.array([rd1,rd2]))
             if rd1>0:
